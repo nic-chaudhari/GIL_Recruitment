@@ -1,0 +1,117 @@
+﻿@model GIL_Recruitment.Models.jobpost
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .education_title h3 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    .
+    .education_qualification,
+    .education-desirable,
+    .education-experience,
+    .age-limit {
+        margin-top: 20px;
+    }
+
+
+    .qualification,
+    .desirable,
+    .experience,
+    span {
+        font-size: 18px;
+        font-weight: normal;
+    }
+
+        .qualification::before,
+        .desirable::before,
+        .experience::before {
+            content: attr(title);
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+    .age-limit  span{
+        font-size: 18px;
+        font-weight: normal;
+    }
+
+    .accept-btn button{
+        background-color: green;
+        color: white;
+        padding:15px;
+        text-align:center;
+        margin-left:414px;
+        padding: 13px 108px;
+    }
+
+        .accept-btn a:hover {
+            background-color: green; /* this is to disable hover effect */
+        }
+
+
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 5px;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    
+    .font-weight-bold{
+
+        font-size:large;
+        font-weight:bolder;
+    }
+</style>
+
+<h1 style="text-align:center">
+    <div class="education_title">
+        <p class="title">
+            <h3>@Html.Raw(Model.title)</h3>
+        </p>
+    </div>
+</h1>
+
+<div>
+    <div class="education_qualification">
+        <p class="qualification">
+            <p class="d_title font-weight-bold">Education Qualification:</p>
+            <span> @Html.Raw(Model.qualification)</span>
+        </p>
+    </div>
+
+    <div class="education-desirable">
+        <p class="desirable">
+        <p class="d_title font-weight-bold" >Desirable:</p>
+            <span>@Html.Raw(Model.desirable)</span>
+        </p>
+    </div>
+
+    <div class="education-experience">
+        <p class="experience">
+        <p class="d_title font-weight-bold">Experience:</p>
+        <span>@Html.Raw(Model.experience)</span>
+        </p>
+    </div>
+
+    <div class="age-limit">
+        <p class="d_title font-weight-bold">Age limit:</p>
+        <span>@Html.Raw(Model.age_limit.ToString() + " Years (As on " + Model.end_date.ToString("dd.MM.yyyy") + ")")</span>
+    </div>
+    <br />
+    <div class="accept-btn ">
+        @*<a href="#" >Accept and Continue</a>*@
+        <button>@Html.ActionLink("Accept and continue","Personal_info","Home")</button>
+    </div>
+    
+</div>

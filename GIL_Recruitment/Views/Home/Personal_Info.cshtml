@@ -1,0 +1,342 @@
+﻿@model personal_infomodel
+
+
+@{
+    ViewData["Title"] = "Personal_Info";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .accept-btn  {
+        background-color: green;
+        color: white;
+        padding: 15px;
+        margin-left: 326px;
+        padding: 12px 72px;
+    }
+
+    .accept-btn :hover {
+        background-color: green; /* this is to disable hover effect */
+    }
+
+</style>
+<h1>Personal Information</h1>
+
+<hr />
+
+
+    <form asp-action="Personal_info">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="col-md-3">
+
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label">Title</label>
+                    <select id="ddltitle" asp-for="Cast" class="form-control">
+                       @* <option value="">--Select Title--</option>*@
+                        <option value="Mr">Mr.</option>
+                        <option value="mrs">Mrs.</option>
+                        <option value="Ms">Ms.</option>
+                        <option value="Dr">Dr.</option>
+                    </select>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label">First Name</label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="MiddleName" class="control-label"></label>
+                    <input asp-for="MiddleName" class="form-control" />
+                    <span asp-validation-for="MiddleName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Surname" class="control-label"></label>
+                    <input asp-for="Surname" class="form-control" />
+                    <span asp-validation-for="Surname" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="MotherName" class="control-label"></label>
+                    <input asp-for="MotherName" class="form-control" />
+                    <span asp-validation-for="MotherName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Gender" class="control-label"></label><br />
+                <div style="border: 1px solid #ced4da;">
+                    <label>
+                        @Html.RadioButtonFor(model => model.Gender, 1)
+                        <span>Male</span>
+                    </label>
+                    <label>
+                        @Html.RadioButtonFor(model => model.Gender, 2)
+                        <span>Female</span>
+                    </label>
+                    <label>
+                        @Html.RadioButtonFor(model => model.Gender, 3)
+                        <span>Others</span>
+                    </label>
+                </div>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="DateOfBirth" class="control-label"></label>
+                    <input asp-for="DateOfBirth" type="date" class="form-control" />
+                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Nationality" class="control-label"></label>
+                    <select id="ddlnationality   " asp-for="Nationality" class="form-control">
+                        <option value="">--Select Nationality--</option>
+                        <option value="1">Indian</option>
+                        <option value="2">OCI(Overseas citizen of india)</option>
+                    </select>
+                    <span asp-validation-for="Nationality" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="ContactNo" class="control-label"></label>
+                    <input asp-for="ContactNo" class="form-control" />
+                    <span asp-validation-for="ContactNo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="AlternateNo" class="control-label"></label>
+                    <input asp-for="AlternateNo" class="form-control" />
+                    <span asp-validation-for="AlternateNo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Cast" class="control-label"></label>
+                    <select id="ddlcast" asp-for="Cast" class="form-control">
+                        <option value="">--Select cast--</option>
+                        <option value="1">SC</option>
+                        <option value="2">ST</option>
+                        <option value="3">General</option>
+                        <option value="4">SEBC</option>
+                        <option value="5">OBC</option>
+                    </select>
+                    <span asp-validation-for="Cast" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Phychall" class="control-label">Physically challenged</label><br />
+                <div style="border: 1px solid #ced4da;">
+                    <label>
+                        @Html.RadioButtonFor(model => model.Phychall, 1)
+                        <span>Yes</span>
+                    </label>
+                    <label>
+                        @Html.RadioButtonFor(model => model.Phychall, 2)
+                        <span>No</span>
+                    </label>
+                </div>
+                    <span asp-validation-for="Phychall" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PresentAdd" class="control-label"></label>
+                <input asp-for="PresentAdd" class="form-control" style="padding:44px" />
+                    <span asp-validation-for="PresentAdd" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PermanentAdd" class="control-label"></label>
+                <input asp-for="PermanentAdd" class="form-control" style="padding:44px" />
+                    <span asp-validation-for="PermanentAdd" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+<br />
+
+        <div class="form-group" >
+            <label asp-for="Maritial" class="control-label">Maritial Status : </label>
+        <div style="border: 1px solid #ced4da;">
+            <label>
+                @Html.RadioButtonFor(model => model.Maritial, 1)
+                <span>Married</span>
+            </label>
+
+            <label>
+                @Html.RadioButtonFor(model => model.Maritial, 2)
+                <span>UnMarried</span>
+            </label>
+            <label>
+                @Html.RadioButtonFor(model => model.Maritial, 3)
+                <span>Separated</span>
+            </label>
+        </div>
+            <span asp-validation-for="Maritial" class="text-danger"></span>
+        </div>
+<br />
+
+     <div class="upload-photo">
+    <div>
+        <div>
+            <p style=" position: relative;
+           z-index: 1;
+           margin-bottom: 40px;
+           border-bottom: 1px solid #0c2e6b;">
+                <label asp-for="Upphoto" class="control-label padding: 2.375rem 0.75rem" style="font-size:larger; font-weight:bold">Upload Photo</label>
+            </p>
+        </div>
+    </div>
+    <div class="row ">
+        
+        <div class="col-md-6">
+            <p style="    color: #b33;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: " Open Sans", sans-serif;">
+                Quality of Photograph should be Good Enough to Be Identifiable and Acceptable. Photograph size must not exceed 100 KB.
+                Dimensions: Width: 280 px, Height: 300 px (Only .Jpeg or .Jpg or .png)
+                <a href="https://imresizer.com/" style="color:blue; font-weight:bold">CLICK HERE</a>  to resize the file.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+               
+                <input asp-for="Upphoto" type="file" style="padding:44px" />
+                <span asp-validation-for="Upphoto" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+ </div>
+
+<br />
+
+    <div class="upload-sign">
+        <div>
+            <div>
+                <p style=" position: relative;
+           z-index: 1;
+           margin-bottom: 40px;
+           border-bottom: 1px solid #0c2e6b;">
+                    <label asp-for="Upsign" class="control-label padding: 2.375rem 0.75rem" style="font-size:larger; font-weight:bold">Upload Sign</label>
+                </p>
+            </div>
+        </div>
+        <div class="row ">
+
+            <div class="col-md-6">
+                <p style="    color: #b33;
+                font-weight: 700;
+                font-size: 14px;
+                font-family: " Open Sans", sans-serif;">
+                    Note : Quality of Signature should be Good Enough to Be Identifiable and Acceptable. Signature size must not exceed 100 KB.
+                    Dimensions: Width: 280 px, Height: 300 px (Only .Jpeg or .Jpg or .png)
+                    <a href="https://imresizer.com/" style="color:blue; font-weight:bold">CLICK HERE</a>  to resize the file.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    <input asp-for="Upsign" type="file" style="padding:44px" />
+                    <span asp-validation-for="Upsign" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<br />
+
+    <div class="upload-proof">
+        <div>
+            <div>
+                <p style=" position: relative;
+           z-index: 1;
+           margin-bottom: 40px;
+           border-bottom: 1px solid #0c2e6b;">
+                    <label asp-for="Upproof" class="control-label padding: 2.375rem 0.75rem" style="font-size:larger; font-weight:bold">Upload Date of Birth Proof</label>
+                </p>
+            </div>
+        </div>
+        <div class="row ">
+
+            <div class="col-md-6">
+                <p style="    color: #b33;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: " Open Sans", sans-serif;">
+                    Note : Quality of File should be Good Enough to Be Identifiable and Acceptable.
+                    Dimensions: (Only .Jpeg or .Jpg or .png or .pdf)
+                    <a href="https://imresizer.com/" style="color:blue; font-weight:bold">CLICK HERE</a>  to resize the file.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    <input asp-for="Upproof" type="file" style="padding:44px" />
+                    <span asp-validation-for="Upproof" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<br />
+
+
+            
+  <div class="row">
+        <div class="form-group col-md-3">
+            <button class="accept-btn "> @Html.ActionLink("Previous","Recruitment","Home")</button>
+            
+        </div>
+       
+        <div class="form-group col-md-3">
+           <input type="submit" value="submit" class="accept-btn" />
+            @*<button class="accept-btn "> @Html.ActionLink("Submit","","Home")</button>*@
+        </div>
+  </div>
+            
+    
+    </form>
+</div>
+    </div>
+
+
+
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

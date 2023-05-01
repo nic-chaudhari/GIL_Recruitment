@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Recruitment Portal</title>
+
+    <link rel="stylesheet" href="~/admin_files/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="~/admin_files/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="~/admin_files/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/admin_files/vendors/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="~/admin_files/vendors/chartist/chartist.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+
+    <link href="~/admin_files/css/style.css" rel="stylesheet" />
+    <a href="~/admin_files/css/style.css.map">~/admin_files/css/style.css.map</a>
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="~/admin_files/images/favicon.png" />
+
+</head>
+<body>
+    <div class="container-scroller">
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="navbar-brand-wrapper d-flex align-items-center">
+                <a class="navbar-brand brand-logo" href="">
+                    <img src="~/admin_files/gil.png" style="width: 97px;
+                         max-width: 100%;
+                         height: 62px;
+                         margin: 35px;
+                         vertical-align: middle; "/>
+                </a>
+                @*<a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo" /></a>*@
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
+                <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome to Admin dashboard!</h5>
+            </div>
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper " style="padding-top:45px" >
+            <!-- partial:partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                   @* <li class="nav-item nav-profile">
+                        <a href="#" class="nav-link">
+                           
+                            
+                            <div class="icon-container">
+                                <i class="icon-bubbles"></i>
+                                <div class="dot-indicator bg-danger"></div>
+                            </div>
+                        </a>
+                    </li>*@
+                   <br />
+                   <br />
+                   
+                    <li class="nav-item nav-category"><span class="nav-link">Recruitment</span></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://localhost:7204/Admin/Job_post">
+                            <span class="menu-title">Job Post</span>
+                            <i class="icon-screen-desktop menu-icon"></i>
+                        </a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="https://localhost:7204/Admin/All_candidates" aria-expanded="false" aria-controls="ui-basic">
+                            <span class="menu-title">All Candidates</span>
+                            <i class="icon-layers menu-icon"></i>
+                        </a>
+                     
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://localhost:7204/Admin/Application_received">
+                            <span class="menu-title">Application Received</span>
+                            <i class="icon-globe menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://localhost:7204/Admin/Post_application">
+                            <span class="menu-title">Post Application</span>
+                            <i class="icon-book-open menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://localhost:7204/Admin/Send_calllater">
+                            <span class="menu-title">Send Call Latter</span>
+                            <i class="icon-chart menu-icon"></i>
+                        </a>
+                    </li>
+
+                
+                  
+                </ul>
+            </nav>
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    @RenderBody()
+                </div>
+                <!-- content-wrapper ends -->
+                <!-- partial:partials/_footer.html -->
+                <footer class="footer">
+                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span>
+                    </div>
+                </footer>
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+
+    <script src="vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="./vendors/chart.js/Chart.min.js"></script>
+    <script src="./vendors/moment/moment.min.js"></script>
+    <script src="./vendors/daterangepicker/daterangepicker.js"></script>
+    <script src="./vendors/chartist/chartist.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="js/off-canvas.js"></script>
+    <script src="js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="./js/dashboard.js"></script>
+    <!-- End custom js for this page -->
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

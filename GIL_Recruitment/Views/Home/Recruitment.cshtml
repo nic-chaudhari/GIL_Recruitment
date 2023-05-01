@@ -1,0 +1,268 @@
+﻿
+@{
+    ViewData["Title"] = "Recruitment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    
+@model IEnumerable<GIL_Recruitment.Models.jobpost>
+
+
+<style>
+    .single-job-items {
+        border: 1px solid #eee;
+        padding: 20px;
+        margin-bottom: 30px;
+        background-color: #fff;
+        box-shadow: 0px 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .job-tittle h4 {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    .job-tittle ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        .job-tittle ul li {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+    .items-link {
+        margin-top: 20px;
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+    }
+
+        .items-link a {
+            display: inline-block;
+            padding: 8px 30px;
+            background-color: green;
+            color: #fff;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+            .items-link a:hover {
+                background-color: #16a085;
+            }
+
+        .items-link span,
+        .items-link p {
+            display: block;
+            font-size: 14px;
+            color: #999;
+            margin-top: 10px;
+        }
+
+    .my-list li {
+        display: block;
+    }
+</style>
+<div style="position: relative;
+    z-index: 1;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #0c2e6b;">
+<h2 style="font-weight: 700;
+    color: var(--titlecolor);
+    font-family: " Work Sans", sans-serif;">
+    Career
+</h2>
+</div>
+<br />
+
+
+<div class="row">
+    <div class="col-md-12">
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="searchInput">
+            <button class="btn btn-outline-success " type="button" id="searchButton">Search</button>
+        </form>
+    </div>
+</div>
+<br />
+
+<main id="job-posts">
+    @for (int i = 0; i < Model.Count(); i += 3)
+    {
+        <div class="row">
+            @foreach (var item in Model.Skip(i).Take(3))
+            {
+                <div class="col-md-4">
+                    <div class="single-job-items mb-30">
+                        <div class="job-items">
+                            <div class="job-tittle">
+                                <a href="@Url.Action("Details", new { id = item.id})"><h4>@item.title</h4></a>
+                                <ul style="display: flex;flex-direction: column;">
+
+                                    <li>Start Date :@item.start_date.ToShortDateString()</li>
+                                </ul>
+                                <ul style="display: flex;flex-direction: column;">
+
+                                    <li>Last Date : :@item.end_date.ToShortDateString()</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="items-link f-right">
+
+                            @Html.ActionLink("Apply","Details","Home", new{id = item.id})
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</main>
+
+<script>
+    document.getElementById("searchButton").addEventListener("click", function () {
+        var searchInput = document.getElementById("searchInput").value.toLowerCase();
+        var jobItems = document.getElementsByClassName("single-job-items");
+        var searchForm = document.getElementById("searchForm");
+
+        for (var i = 0; i < jobItems.length; i++) {
+            var company = jobItems[i].getElementsByClassName("job-tittle")[0].getElementsByTagName("h4")[0].textContent.toLowerCase();
+            var skills = jobItems[i].getElementsByClassName("job-tittle")[0].getElementsByTagName("ul")[0].getElementsByTagName("li")[0].textContent.toLowerCase();
+
+            if (company.indexOf(searchInput) > -1 || skills.indexOf(searchInput) > -1) {
+                jobItems[i].style.display = "";
+            } else {
+                jobItems[i].style.display = "none";
+            }
+        }
+
+        searchForm.submit();
+    });
+
+</script>
+
+@*
+
+<head>
+    <style>
+        .single-job-items {
+            border: 1px solid #eee;
+            padding: 20px;
+            margin-bottom: 30px;
+            background-color: #fff;
+            box-shadow: 0px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .job-tittle h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .job-tittle ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+            .job-tittle ul li {
+                font-size: 14px;
+                color: #666;
+                margin-bottom: 10px;
+            }
+
+        .items-link {
+            margin-top: 20px;
+        }
+
+            .items-link a {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #1abc9c;
+                color: #fff;
+                border-radius: 3px;
+                transition: all 0.3s ease;
+            }
+
+                .items-link a:hover {
+                    background-color: #16a085;
+                }
+
+            .items-link span,
+            .items-link p {
+                display: block;
+                font-size: 14px;
+                color: #999;
+                margin-top: 10px;
+            }
+
+    </style>
+</head>
+<div class="row">
+    <div class="col-md-12">
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="searchInput">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="button" id="searchButton">Search</button>
+        </form>
+    </div>
+</div>
+
+<main id="job-posts">
+    @for (int i = 0; i < Model.Count(); i += 3)
+    {
+        <div class="row">
+            @foreach (var item in Model.Skip(i).Take(3))
+            {
+                <div class="col-md-4">
+                    <div class="single-job-items mb-30">
+                        <div class="job-items">
+                            <div class="job-tittle">
+                                <a href="@Url.Action("Details", new { id = item.id})"><h4>@item.title</h4></a>
+                                <ul>
+                                
+                             
+                                    <li>@item.start_date.ToShortDateString()</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="items-link f-right">
+                           
+                            @Html.ActionLink("Apply","Details","Home", new{id = item.id})
+                        </div>
+                 
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</main>
+
+<script>
+    document.getElementById("searchButton").addEventListener("click", function () {
+        var searchInput = document.getElementById("searchInput").value.toLowerCase();
+        var jobItems = document.getElementsByClassName("single-job-items");
+        var searchForm = document.getElementById("searchForm");
+
+        for (var i = 0; i < jobItems.length; i++) {
+            var company = jobItems[i].getElementsByClassName("job-tittle")[0].getElementsByTagName("h4")[0].textContent.toLowerCase();
+            var skills = jobItems[i].getElementsByClassName("job-tittle")[0].getElementsByTagName("ul")[0].getElementsByTagName("li")[0].textContent.toLowerCase();
+
+            if (company.indexOf(searchInput) > -1 || skills.indexOf(searchInput) > -1) {
+                jobItems[i].style.display = "";
+            } else {
+                jobItems[i].style.display = "none";
+            }
+        }
+
+        searchForm.submit();
+    });
+
+</script>
+*@
