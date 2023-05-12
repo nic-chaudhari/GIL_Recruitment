@@ -9,14 +9,22 @@ namespace GIL_Recruitment.Models
     {
        
             public int id { get; set; }
+
+            [Required]
             public string title { get; set; }
-            public string description { get; set; }
-            public string age_limit { get; set; }
-            public DateTime start_date { get; set; }
-            public DateTime end_date { get; set; }
-            public string qualification { get; set; }
-            public string desirable { get; set; }
-            public string experience { get; set; }
+
+        [Required]
+        public string age_limit { get; set; }
+        [Required]
+        public DateTime start_date { get; set; }
+        [Required]
+        public DateTime end_date { get; set; }
+        [Required]
+        public string qualification { get; set; }
+        [Required]
+        public string desirable { get; set; }
+        [Required]
+        public string experience { get; set; }
       
 
     }

@@ -1,8 +1,197 @@
-﻿
+﻿@model IEnumerable<AllDetails>
+
 @{
-    ViewData["Title"] = "All_candidates";
+    ViewData["Title"] = "candidates";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>All_candidates</h1>
 
+<style>
+    .table-wrapper {
+        height: 700px; /* set a fixed height */
+        overflow-y: scroll; /* add a scroll bar */
+    }
+
+    .table thead th {
+        background-color: green;
+        color: white;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #ddd;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<div class="table-wrapper">
+    <div class="row">
+        <div class="col-md-6">
+            <label for="title">Search candidates by post:</label>
+            <select id="title">
+                <option value="">All</option>
+                @foreach (var title in Model.Select(e => e.title).Distinct())
+                {
+                    <option value="@title">@title</option>
+                }
+            </select>
+        </div>
+    </div>
+    <br />
+
+    <table id="tbl">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Post Name</th>
+                <th>Title</th>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Surname</th>
+                <th>Mother Name</th>
+                <th>Gender</th>
+                <th>Date of Birth</th>
+                <th>Nationality</th>
+                <th>Contact No</th>
+                <th>Alternate No</th>
+                <th>Cast</th>
+                <th>Phychall</th>
+                <th>Present Address</th>
+                <th>Permanent Address</th>
+                <th>Maritial</th>
+                <th>Up Photo</th>
+                <th>Up Sign</th>
+                <th>Up Proof</th>
+                <th>Educational Detail</th>
+                <th>Degree Name</th>
+                <th>Percentage</th>
+                <th>Class</th>
+                <th>University</th>
+                <th>No. of Trials</th>
+                <th>Pass Month</th>
+                <th>Pass Year</th>
+                <th>Up Certi</th>
+                <th>Previous Educational Detail</th>
+                <th>Previous Degree Name</th>
+                <th>Previous Percentage</th>
+                <th>Previous Class</th>
+                <th>Previous University</th>
+                <th>Previous No. of Trials</th>
+                <th>Previous Pass Month</th>
+                <th>Previous Pass Year</th>
+                <th>Previous Up Certi</th>
+
+                <th>Job Sector</th>
+                <th>Name of Post</th>
+                <th>Start From</th>
+                <th>End To</th>
+                <th>Employer Name</th>
+                <th>Employer Contact No</th>
+                <th>Employer Address</th>
+                <th>Employer Pin Code</th>
+                <th>Job Description</th>
+                <th>Salary</th>
+                <th>Up Exp Certi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr title="@item.title">
+                    <td>@item.Id</td>
+                    <td>@item.title</td>
+                    <td>@item.Title</td>
+                    <td>@item.FirstName</td>
+                    <td>@item.MiddleName</td>
+                    <td>@item.Surname</td>
+                    <td>@item.MotherName</td>
+                    <td>@item.Gender</td>
+                    <td>@item.DateOfBirth</td>
+                    <td>@item.Nationality</td>
+                    <td>@item.ContactNo</td>
+                    <td>@item.AlternateNo</td>
+                    <td>@item.Cast</td>
+                    <td>@item.Phychall</td>
+                    <td>@item.PresentAdd</td>
+                    <td>@item.PermanentAdd</td>
+                    <td>@item.Maritial</td>
+                    <td>@item.Upphoto</td>
+                    <td>@item.Upsign</td>
+                    <td>@item.Upproof</td>
+                    <td>@item.Edudetail</td>
+                    <td>@item.Degname</td>
+                    <td>@item.Percentage</td>
+                    <td>@item.Class</td>
+                    <td>@item.University</td>
+                    <td>@item.Nooftrails</td>
+                    <td>@item.Passmonth</td>
+                    <td>@item.Passyear</td>
+                    <td>@item.Upcerti</td>
+                    <td>@item.pEdudetail</td>
+                    <td>@item.pDegname</td>
+                    <td>@item.pPercentage</td>
+                    <td>@item.pClass</td>
+                    <td>@item.pUniversity</td>
+                    <td>@item.pNooftrails</td>
+                    <td>@item.pPassmonth</td>
+                    <td>@item.pPassyear</td>
+                    <td>@item.pUpcerti</td>
+                    <td>@item.jobsector</td>
+                    <td>@item.nameofpost</td>
+                    <td>@item.startfrom</td>
+                    <td>@item.endto</td>
+                    <td>@item.empname</td>
+                    <td>@item.empcontactno</td>
+                    <td>@item.empadd</td>
+                    <td>@item.emppincode</td>
+                    <td>@item.jobdescription</td>
+                    <td>@item.salary</td>
+                    <td>@item.upexpcerti</td>
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+
+    // Get the dropdown element and the table rows
+    const dropdown = document.getElementById("title");
+    const rows = document.querySelectorAll("#tbl tbody tr");
+
+    // Handle the change event of the dropdown
+    dropdown.addEventListener("change", () => {
+        const selectedTitle = dropdown.value;
+
+        // Show all rows if the "All" option is selected
+        if (selectedTitle === "") {
+            rows.forEach(row => (row.style.display = ""));
+        }
+        // Otherwise, show only the rows that match the selected job title
+        else {
+            rows.forEach(row => {
+                const jobTitle = row.getAttribute("title");
+                if (jobTitle === selectedTitle) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+    });
+</script>

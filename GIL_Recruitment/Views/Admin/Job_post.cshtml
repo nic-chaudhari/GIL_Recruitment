@@ -5,65 +5,109 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Job_post</h1>
+<style>
+    .accept-btn button {
+        background-color: green;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        
+        padding: 12px 51px;
+    }
 
-<h4>jobpost</h4>
+     .accept-btn a:hover {
+        background-color: green; /* this is to disable hover effect */
+    }
+
+    label::after {
+        color: red;
+        content: "*";
+    }
+ /*   label[for="title"]::after {
+        content: "*";
+        color: red;
+    }
+*/
+   
+</style>
+
+
+<h4>Job Post</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Job_post">
+    
+            <form asp-action="Job_post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-         
-            <div class="form-group">
-                <label asp-for="title" class="control-label"></label>
-                <input asp-for="title" class="form-control" />
-                <span asp-validation-for="title" class="text-danger"></span>
+            <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="title" class="control-label">Title</label>
+                    <input asp-for="title" class="form-control" />
+                    <span asp-validation-for="title" class="text-danger"></span>
+                </div>
             </div>
+            <div class="col-md-6">
             <div class="form-group">
-                <label asp-for="description" class="control-label"></label>
-                <input asp-for="description" class="form-control" />
-                <span asp-validation-for="description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="age_limit" class="control-label"></label>
+                <label asp-for="age_limit" class="control-label">Age limit</label>
                 <input asp-for="age_limit" class="form-control" />
                 <span asp-validation-for="age_limit" class="text-danger"></span>
             </div>
+            </div>
+            </div>
+
+        <div class="row">
+            <div class="col-md-6">
             <div class="form-group">
-                <label asp-for="start_date" class="control-label"></label>
+                <label asp-for="start_date" class="control-label">Start Date</label>
                 <input asp-for="start_date" type="date" class="form-control" />
                 <span asp-validation-for="start_date" class="text-danger"></span>
             </div>
+            </div>
+            <div class="col-md-6">
             <div class="form-group">
-                <label asp-for="end_date" class="control-label"></label>
+                <label asp-for="end_date" class="control-label">End Date</label>
                 <input asp-for="end_date" type="date" class="form-control" />
                 <span asp-validation-for="end_date" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="qualification" class="control-label"></label>
-                <input asp-for="qualification" class="form-control" />
-                <span asp-validation-for="qualification" class="text-danger"></span>
+               
             </div>
-            <div class="form-group">
-                <label asp-for="desirable" class="control-label"></label>
-                <input asp-for="desirable" class="form-control" />
-                <span asp-validation-for="desirable" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="experience" class="control-label"></label>
-                <input asp-for="experience" class="form-control" />
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+            <div class="form-group" >
+                <label asp-for="experience" class="control-label">Experience</label>
+                <input asp-for="experience" class="form-control" style="padding:50px" />
                 <span asp-validation-for="experience" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="ADD" class="btn btn-primary" />
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="qualification" class="control-label">Qualification</label>
+                <input asp-for="qualification" class="form-control" style="padding:50px" />
+                    <span asp-validation-for="qualification" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="desirable" class="control-label">Desirable</label>
+                <input asp-for="desirable" class="form-control" style="padding:50px" />
+                    <span asp-validation-for="desirable" class="text-danger"></span>
+                </div>
+            </div>
+            
+        </div>
+        
+        <br />
+
+    <div class="accept-btn ">
+        <button > Add</button>
             </div>
         </form>
-    </div>
-</div>
+   
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

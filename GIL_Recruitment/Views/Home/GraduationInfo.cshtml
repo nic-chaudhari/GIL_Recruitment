@@ -1,0 +1,267 @@
+﻿@model GraduationInfo
+
+@{
+    ViewData["Title"] = "GraduationInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    var form = document.querySelector('form');
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var formData = new FormData(form);
+        var selectedValues = formData.getAll('language');
+        // Filter out any values that are not selected
+        var filteredValues = selectedValues.filter(function (x) { return x !== 'false'; });
+        // Join the selected values into a comma-separated string
+        var selectedLanguagesStr = filteredValues.join(',');
+        // Set the value of the hidden input field
+        document.getElementById('selectedLanguages').value = selectedLanguagesStr;
+        // Submit the form
+        form.submit();
+    });
+
+</script>
+
+<form asp-action="GraduationInfo">
+
+    <div style="border-bottom: 2px solid green">
+        <h3>Graduation Details</h3>
+    </div>
+    <hr />
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Edudetail" class="control-label">EDUCATION DETAILS</label>
+                    <select id="Edudetail" asp-for="Edudetail" class="form-control">
+                        <option value="">--Select Education Detail--</option>
+                    <option value="Bachelor Of Applied Science (BASc)"> Bachelor Of Applied Science (BASc)</option>
+                    <option value="Bachelor Of Arts (BA)">Bachelor Of Arts (BA)</option>
+                    <option value="Bachelor Of Business Administration (BBA)">Bachelor Of Business Administration (BBA)</option>
+                    <option value="Bachelor Of Engineering (B.E)">Bachelor Of Engineering (B.E)</option>
+                    </select>
+                    <span asp-validation-for="Edudetail" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Degname" class="control-label">DEGREE NAME</label>
+                    <input asp-for="Degname" class="form-control" />
+                    <span asp-validation-for="Degname" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Percentage" class="control-label">PERCENTAGE</label>
+                    <input asp-for="Percentage" class="form-control" />
+                    <span asp-validation-for="Percentage" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Class" class="control-label">CLASS</label>
+                    <input asp-for="Class" class="form-control" />
+                    <span asp-validation-for="Class" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="University" class="control-label">UNIVERSITY</label>
+                    <input asp-for="University" class="form-control" />
+                    <span asp-validation-for="University" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Nooftrails" class="control-label">NO OF TRAILS</label>
+                    <input asp-for="Nooftrails" class="form-control" />
+                    <span asp-validation-for="Nooftrails" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Passmonth" class="control-label">PASS MONTH</label>
+                    <input asp-for="Passmonth" class="form-control" />
+                    <span asp-validation-for="Passmonth" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Passyear" class="control-label">PASS YEAR</label>
+                    <input asp-for="Passyear" class="form-control" />
+                    <span asp-validation-for="Passyear" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+        <div class="form-group" style="margin-left: 17px;">
+          
+                <label asp-for="Upcerti" class="control-label">UPLOAD CERIFICATE</label>
+                <input asp-for="Upcerti" class="form-control" type="file" />
+                <span asp-validation-for="Upcerti" class="text-danger"></span>
+            </div>
+          
+        </div>
+        @*
+        <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+        </div>*@
+
+        <br />
+    <div style="border-bottom: 2px solid green">
+        <h3>Post Graduation Details</h3>
+    </div>
+    <hr />
+    
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="pEdudetail" class="control-label">EDUCATION DETAILS</label>
+                <select id="pEdudetail" asp-for="pEdudetail" class="form-control">
+                    <option value="">--Select Education Detail--</option>
+                    <option value="Master of Business Administration (MBA)">Master of Business Administration (MBA)</option>
+                    <option value="Master of Engineering(MBA)">Master of Engineering(MBA)</option>
+                    <option value="Master of computer science">Master of computer science</option>
+                    <option value="Master of Computer Application(MCA)">Master of Computer Application(MCA)</option>
+
+
+                </select>
+                <span asp-validation-for="pEdudetail" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+          
+                <div class="form-group">
+                    <label asp-for="pDegname" class="control-label">DEGREE NAME</label>
+                    <input asp-for="pDegname" class="form-control" />
+                    <span asp-validation-for="pDegname" class="text-danger"></span>
+                </div>
+      
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="pPercentage" class="control-label">PERCENTAGE</label>
+                <input asp-for="pPercentage" class="form-control" />
+                <span asp-validation-for="pPercentage" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="pClass" class="control-label">CLASS</label>
+                <input asp-for="pClass" class="form-control" />
+                <span asp-validation-for="pClass" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="pUniversity" class="control-label">UNIVERSITY</label>
+                <input asp-for="pUniversity" class="form-control" />
+                <span asp-validation-for="pUniversity" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="pNooftrails" class="control-label">NO OF TRAILS</label>
+                <input asp-for="pNooftrails" class="form-control" />
+                <span asp-validation-for="pNooftrails" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="pPassmonth" class="control-label">PASS MONTH</label>
+                <input asp-for="pPassmonth" class="form-control" />
+                <span asp-validation-for="pPassmonth" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="pPassyear" class="control-label">PASS YEAR</label>
+                <input asp-for="pPassyear" class="form-control" />
+                <span asp-validation-for="pPassyear" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group" style="margin-left: 17px;">
+
+            <label asp-for="pUpcerti" class="control-label">UPLOAD CERIFICATE</label>
+            <input asp-for="pUpcerti" class="form-control" type="file" />
+            <span asp-validation-for="pUpcerti" class="text-danger"></span>
+        </div>
+
+    </div>
+  
+        <br />
+        
+        <div style="border-bottom: 2px solid green;">
+            <h3 style="color:black;">Language Known</h3>
+        </div>
+        <div class="form-group">
+            <label asp-for="languagelist" class="control-label"></label>
+            <div class="checkbox-list">
+                <div class="checkbox">
+                    <label>
+                       
+                        <input type="checkbox" asp-for="languagelist" value="ENGLISH" />
+                        ENGLISH
+                    </label>
+
+                    <label>
+                       
+                        <input type="checkbox" asp-for="languagelist" value="GUJARATI" />
+                        GUJARATI
+                    </label>
+                    <label>
+                       
+                        <input type="checkbox" asp-for="languagelist" value="HINDI" />
+                        HINDI
+                    </label>
+                </div>
+            </div>
+            <input type="hidden" name="selectedLanguages" id="selectedLanguages" />
+            <span asp-validation-for="languagelist" class="text-danger"></span>
+        </div>
+
+<br />
+
+    <div class="row">
+        <div class="form-group col-md-3">
+            <button class="accept-btn "> @Html.ActionLink("Previous","Recruitment","Home")</button>
+
+        </div>
+
+        <div class="form-group col-md-3">
+            <input type="submit" value="submit" class="accept-btn" />
+            @*<button class="accept-btn "> @Html.ActionLink("Submit","","Home")</button>*@
+        </div>
+    </div>
+
+</form>
+<style>
+    .accept-btn {
+        background-color: green;
+        color: white;
+        padding: 15px;
+        margin-left: 326px;
+        padding: 12px 72px;
+    }
+
+        .accept-btn :hover {
+            background-color: green; /* this is to disable hover effect */
+        }
+</style>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

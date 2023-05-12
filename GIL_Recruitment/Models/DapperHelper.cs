@@ -82,6 +82,35 @@ namespace GIL_Recruitment.Models
             }
         }
 
+        public static async Task<int> InsertIntoGraduationInfo(GraduationInfo graduationInfo, string[] selectedLanguages)
+        {
+            using (var connection = DapperHelper.GetOpenConnection())
+            {
+                string selectedLanguagesStr = string.Join(",", selectedLanguages.Where(x => x != "false"));
+                var parameters = new DynamicParameters();
+                parameters.Add("@EduDetail", graduationInfo.Edudetail, DbType.String);
+                parameters.Add("@DegName", graduationInfo.Degname, DbType.String);
+                parameters.Add("@Percentage", graduationInfo.Percentage, DbType.Decimal);
+                parameters.Add("@Class", graduationInfo.Class, DbType.String);
+                parameters.Add("@University", graduationInfo.University, DbType.String);
+                parameters.Add("@NoOfTrials", graduationInfo.Nooftrails, DbType.Int32);
+                parameters.Add("@PassMonth", graduationInfo.Passmonth, DbType.String);
+                parameters.Add("@PassYear", graduationInfo.Passyear, DbType.String);
+                parameters.Add("@UpCerti", graduationInfo.Upcerti, DbType.Binary);
+                parameters.Add("@PEduDetail", graduationInfo.pEdudetail, DbType.String);
+                parameters.Add("@PDegName", graduationInfo.pDegname, DbType.String);
+                parameters.Add("@PPercentage", graduationInfo.pPercentage, DbType.Decimal);
+                parameters.Add("@PClass", graduationInfo.pClass, DbType.String);
+                parameters.Add("@PUniversity", graduationInfo.pUniversity, DbType.String);
+                parameters.Add("@PNoOfTrials", graduationInfo.pNooftrails, DbType.Int32);
+                parameters.Add("@PPassMonth", graduationInfo.pPassmonth, DbType.String);
+                parameters.Add("@PPassYear", graduationInfo.pPassyear, DbType.String);
+                parameters.Add("@PUpCerti", graduationInfo.pUpcerti, DbType.Binary);
+                parameters.Add("@Lan", selectedLanguagesStr, DbType.String);
+
+                return await connection.ExecuteAsync("InsertIntoGraduationInfo", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
         public static int Execute(string sql, object param = null)
         {
             using (var connection = GetOpenConnection())

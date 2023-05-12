@@ -34,12 +34,20 @@
                          height: 62px;
                          margin: 35px;
                          vertical-align: middle; "/>
+                         
                 </a>
                 @*<a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo" /></a>*@
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
-                <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome to Admin dashboard!</h5>
+                <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome Admin dashboard!</h5>
+                    
+
+              
+                    <button class = "form-inline ml-auto ">@Html.ActionLink("Logout","Logout","Admin")</button>
+                
+                
             </div>
+
         </nav>
         <!-- partial -->
         <div class="container-fluid page-body-wrapper " style="padding-top:45px" >
@@ -74,24 +82,14 @@
                         </a>
                      
                     </li>
+                  
                     <li class="nav-item">
-                        <a class="nav-link" href="https://localhost:7204/Admin/Application_received">
-                            <span class="menu-title">Application Received</span>
-                            <i class="icon-globe menu-icon"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://localhost:7204/Admin/Post_application">
-                            <span class="menu-title">Post Application</span>
+                        <a class="nav-link" href="https://localhost:7204/Admin/Job_list">
+                            <span class="menu-title">Posted Jobs</span>
                             <i class="icon-book-open menu-icon"></i>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://localhost:7204/Admin/Send_calllater">
-                            <span class="menu-title">Send Call Latter</span>
-                            <i class="icon-chart menu-icon"></i>
-                        </a>
-                    </li>
+               
 
                 
                   

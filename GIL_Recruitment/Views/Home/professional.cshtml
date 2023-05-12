@@ -1,0 +1,152 @@
+﻿
+
+@{
+    ViewData["Title"] = "professional";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@model GIL_Recruitment.Models.professional
+
+
+<div style="border-bottom: 2px solid green;">
+    <h3 style="color:black;">Professional Information</h3>
+</div>
+
+<hr />
+<form asp-action="ProfessionalInfo">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div class="col-md-3">
+
+            <div class="form-group">
+                <label asp-for="jobsector" class="control-label">Job Sector/Type</label>
+                <select id="ddltitle" asp-for="jobsector" class="form-control">
+                    <option value="">--select title--</option>
+
+                    <option value="Chief Executive">-  Chief Executive</option>
+                    <option value="General and Operations Manager">-  General and Operations Manager</option>
+                    <option value="Advertising, Marketing, Promotions, Public Relations, and Sales Manager">-  Advertising, Marketing, Promotions, Public Relations, and Sales Manager</option>
+                    <option value="Operations Specialties Manager (e.g., IT or HR Manager)">-  Operations Specialties Manager (e.g., IT or HR Manager)</option>
+
+                    <option value="Engineering Manager">-  Engineering Manager</option>
+                    <option value="Accountant, Auditor">-  Accountant, Auditor</option>
+                    <option value="Business Operations or Financial Specialist">-  Business Operations or Financial Specialist</option>
+                    <option value="Business Owner">-  Business Owner</option>
+                    <option value="Other Business, Executive, Management, Financial Occupation">-  Other Business, Executive, Management, Financial Occupation</option>
+                </select>
+                <span asp-validation-for="jobsector" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="nameofpost" class="control-label">Name Of Post</label>
+                <input asp-for="nameofpost" class="form-control" />
+                <span asp-validation-for="nameofpost" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="startfrom" class="control-label">Date From</label>
+                <input asp-for="startfrom" class="form-control" />
+                <span asp-validation-for="startfrom" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="endto" class="control-label">Date To</label>
+                <input asp-for="endto" class="form-control" />
+                <span asp-validation-for="endto" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="empname" class="control-label">Employer Name</label>
+                <input asp-for="empname" class="form-control" />
+                <span asp-validation-for="empname" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="empcontactno" class="control-label">Employer Contact No</label>
+                <input asp-for="empcontactno" class="form-control" />
+                <span asp-validation-for="empcontactno" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="empadd" class="control-label">Employer Address </label>
+                <input asp-for="empadd" class="form-control" />
+                <span asp-validation-for="empadd" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="emppincode" class="control-label">Employer Pincode</label>
+                <input asp-for="emppincode" class="form-control" />
+                <span asp-validation-for="emppincode" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="jobdescription" class="control-label">Job Description</label>
+                <input asp-for="jobdescription" class="form-control" />
+                <span asp-validation-for="jobdescription" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="salary" class="control-label">Monthly Salary</label>
+                <input asp-for="salary" class="form-control" />
+                <span asp-validation-for="salary" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="upexpcerti" class="control-label">Upload Experience Certificate</label>
+                <input asp-for="upexpcerti" class="form-control" type="file" />
+                <span asp-validation-for="upexpcerti" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <div class="row">
+        <div class="form-group col-md-3">
+            <button class="accept-btn "> @Html.ActionLink("Previous","Recruitment","Home")</button>
+
+        </div>
+
+        <div class="form-group col-md-3">
+            <input type="submit" value="submit" class="accept-btn" />
+            @*<button class="accept-btn "> @Html.ActionLink("Submit","","Home")</button>*@
+        </div>
+    </div>
+
+</form>
+<style>
+    .accept-btn {
+        background-color: green;
+        color: white;
+        padding: 15px;
+        margin-left: 326px;
+        padding: 12px 72px;
+    }
+
+        .accept-btn :hover {
+            background-color: green; /* this is to disable hover effect */
+        }
+</style>
+
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

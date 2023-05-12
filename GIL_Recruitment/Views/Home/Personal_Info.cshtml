@@ -13,28 +13,43 @@
         margin-left: 326px;
         padding: 12px 72px;
     }
+        label[for="PermanentAdd"]::after {
+      content: "";
+      color: inherit;
+    }
 
+     label[for="AlternateNo"]::after {
+      content: "";
+      color: inherit;
+    }
+
+    label::after {
+        color: red;
+        content: "*";
+    }
     .accept-btn :hover {
         background-color: green; /* this is to disable hover effect */
     }
 
 </style>
-<h1>Personal Information</h1>
+<div style="border-bottom: 2px solid green;">
+    <h3 style="color:black;">Professional Information</h3>
+</div>
 
 <hr />
 
 
-    <form asp-action="Personal_info">
+    <form asp-action="Personal_Info">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="row">
             <div class="col-md-3">
 
                 <div class="form-group">
                     <label asp-for="Title" class="control-label">Title</label>
-                    <select id="ddltitle" asp-for="Cast" class="form-control">
+                    <select id="ddltitle" asp-for="Title" class="form-control">
                        @* <option value="">--Select Title--</option>*@
                         <option value="Mr">Mr.</option>
-                        <option value="mrs">Mrs.</option>
+                        <option value="Mrs">Mrs.</option>
                         <option value="Ms">Ms.</option>
                         <option value="Dr">Dr.</option>
                     </select>
@@ -50,7 +65,7 @@
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <label asp-for="MiddleName" class="control-label"></label>
+                    <label asp-for="MiddleName" class="control-label">Middle Name</label>
                     <input asp-for="MiddleName" class="form-control" />
                     <span asp-validation-for="MiddleName" class="text-danger"></span>
                 </div>
@@ -78,18 +93,18 @@
                 <div class="form-group">
                     <label asp-for="Gender" class="control-label"></label><br />
                 <div style="border: 1px solid #ced4da;">
-                    <label>
-                        @Html.RadioButtonFor(model => model.Gender, 1)
+                    <span>
+                        @Html.RadioButtonFor(model => model.Gender, "Male")
                         <span>Male</span>
-                    </label>
-                    <label>
-                        @Html.RadioButtonFor(model => model.Gender, 2)
+                    </span>
+                    <span>
+                        @Html.RadioButtonFor(model => model.Gender, "Female")
                         <span>Female</span>
-                    </label>
-                    <label>
-                        @Html.RadioButtonFor(model => model.Gender, 3)
+                    </span>
+                    <span>
+                        @Html.RadioButtonFor(model => model.Gender, "Others")
                         <span>Others</span>
-                    </label>
+                    </span>
                 </div>
                     <span asp-validation-for="Gender" class="text-danger"></span>
                 </div>
@@ -106,8 +121,8 @@
                     <label asp-for="Nationality" class="control-label"></label>
                     <select id="ddlnationality   " asp-for="Nationality" class="form-control">
                         <option value="">--Select Nationality--</option>
-                        <option value="1">Indian</option>
-                        <option value="2">OCI(Overseas citizen of india)</option>
+                        <option value="Indian">Indian</option>
+                        <option value="OCI">OCI(Overseas citizen of india)</option>
                     </select>
                     <span asp-validation-for="Nationality" class="text-danger"></span>
                 </div>
@@ -126,7 +141,7 @@
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <label asp-for="AlternateNo" class="control-label"></label>
+                    <label asp-for="AlternateNo" class="control-label">Alternate No.</label>
                     <input asp-for="AlternateNo" class="form-control" />
                     <span asp-validation-for="AlternateNo" class="text-danger"></span>
                 </div>
@@ -136,11 +151,11 @@
                     <label asp-for="Cast" class="control-label"></label>
                     <select id="ddlcast" asp-for="Cast" class="form-control">
                         <option value="">--Select cast--</option>
-                        <option value="1">SC</option>
-                        <option value="2">ST</option>
-                        <option value="3">General</option>
-                        <option value="4">SEBC</option>
-                        <option value="5">OBC</option>
+                        <option value="SC">SC</option>
+                        <option value="ST">ST</option>
+                        <option value="General">General</option>
+                        <option value="SEBC">SEBC</option>
+                        <option value="OBC">OBC</option>
                     </select>
                     <span asp-validation-for="Cast" class="text-danger"></span>
                 </div>
@@ -149,14 +164,14 @@
                 <div class="form-group">
                     <label asp-for="Phychall" class="control-label">Physically challenged</label><br />
                 <div style="border: 1px solid #ced4da;">
-                    <label>
-                        @Html.RadioButtonFor(model => model.Phychall, 1)
+                    <span>
+                        @Html.RadioButtonFor(model => model.Phychall, "Yes")
                         <span>Yes</span>
-                    </label>
-                    <label>
-                        @Html.RadioButtonFor(model => model.Phychall, 2)
+                    </span>
+                    <span>
+                        @Html.RadioButtonFor(model => model.Phychall, "No")
                         <span>No</span>
-                    </label>
+                    </span>
                 </div>
                     <span asp-validation-for="Phychall" class="text-danger"></span>
                 </div>
@@ -166,16 +181,22 @@
         <br />
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <div class="form-group">
-                    <label asp-for="PresentAdd" class="control-label"></label>
+                    <label asp-for="PresentAdd" class="control-label">Present Address</label>
                 <input asp-for="PresentAdd" class="form-control" style="padding:44px" />
                     <span asp-validation-for="PresentAdd" class="text-danger"></span>
                 </div>
             </div>
-            <div class="col-md-6">
+        <div class="col-md-2" style="width:40px; padding: 40px;">
+                <span class="copy-icon" onclick="copyAddress()">
+                    <br />
+                    <i class="fas fa-arrow-right" style="margin-left:45px;"></i>
+                </span>
+            </div>
+            <div class="col-md-5">
                 <div class="form-group">
-                    <label asp-for="PermanentAdd" class="control-label"></label>
+                    <label asp-for="PermanentAdd" class="control-label">Permanent Address</label>
                 <input asp-for="PermanentAdd" class="form-control" style="padding:44px" />
                     <span asp-validation-for="PermanentAdd" class="text-danger"></span>
                 </div>
@@ -184,22 +205,22 @@
 
 <br />
 
-        <div class="form-group" >
+        <div class="form-group col-md-4"  >
             <label asp-for="Maritial" class="control-label">Maritial Status : </label>
         <div style="border: 1px solid #ced4da;">
-            <label>
-                @Html.RadioButtonFor(model => model.Maritial, 1)
+            <span>
+                @Html.RadioButtonFor(model => model.Maritial, "Married")
                 <span>Married</span>
-            </label>
+            </span>
 
-            <label>
-                @Html.RadioButtonFor(model => model.Maritial, 2)
+            <span>
+                @Html.RadioButtonFor(model => model.Maritial, "Unmarried")
                 <span>UnMarried</span>
-            </label>
-            <label>
-                @Html.RadioButtonFor(model => model.Maritial, 3)
+            </span>
+            <span>
+                @Html.RadioButtonFor(model => model.Maritial, "Separated")
                 <span>Separated</span>
-            </label>
+            </span>
         </div>
             <span asp-validation-for="Maritial" class="text-danger"></span>
         </div>
@@ -215,6 +236,7 @@
                 <label asp-for="Upphoto" class="control-label padding: 2.375rem 0.75rem" style="font-size:larger; font-weight:bold">Upload Photo</label>
             </p>
         </div>
+            
     </div>
     <div class="row ">
         
@@ -331,12 +353,14 @@
 
 
 
-
 <script>
-    function goBack() {
-        window.history.back();
+    function copyAddress() {
+        var presentAdd = document.getElementById("PresentAdd");
+        var permanentAdd = document.getElementById("PermanentAdd");
+        permanentAdd.value = presentAdd.value;
     }
 </script>
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

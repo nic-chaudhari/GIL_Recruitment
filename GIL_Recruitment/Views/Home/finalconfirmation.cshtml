@@ -1,0 +1,336 @@
+﻿@*@model finalconfirmation
+@{
+    ViewData["Title"] = "finalconfirmation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="border-bottom: 2px solid green">
+<center><h1>Final Confirmation</h1></center>
+</div>
+<hr />
+
+<h2>Personal Info</h2>
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Firstname</th>
+        <th>Middlename</th>
+        <th>Surname</th>
+        <th>Mothername</th>
+        <th>Gender</th>
+        <th>DateOfBirth</th>
+        <th>Nationality</th>
+        <th>ContactNo</th>
+        <th>AlternateNo</th>
+        <th>Cast</th>
+        <th>Phychall</th>
+        <th>PresentAdd</th>
+        <th>PermanentAdd</th>
+        <th>Maritial</th>
+        <th>Upphoto</th>
+        <th>Upsign</th>
+        <th>Upproof</th>
+
+    </tr>
+        <tr>
+            <th>@Model.PersonalInfo.Title</th>
+            <th>@Model.PersonalInfo.FirstName</th>
+            <th>@Model.PersonalInfo.MiddleName</th>
+            <th>@Model.PersonalInfo.Surname</th>
+            <th>@Model.PersonalInfo.MotherName</th>
+            <th>@Model.PersonalInfo.Gender</th>
+            <th>@Model.PersonalInfo.DateOfBirth</th>
+            <th>@Model.PersonalInfo.Nationality</th>
+            <th>@Model.PersonalInfo.ContactNo</th>
+            <th>@Model.PersonalInfo.AlternateNo</th>
+            <th>@Model.PersonalInfo.Cast</th>
+            <th>@Model.PersonalInfo.Phychall</th>
+            <th>@Model.PersonalInfo.PresentAdd</th>
+            <th>@Model.PersonalInfo.PermanentAdd</th>
+            <th>@Model.PersonalInfo.Maritial</th>
+            <th>@Model.PersonalInfo.Upphoto</th>
+            <th>@Model.PersonalInfo.Upsign</th>
+            <th>@Model.PersonalInfo.Upproof</th>
+         
+        </tr>
+
+    }
+</table>
+
+<h2>Educational Info</h2>
+<table class="table">
+    <tr><h4>Graduation Info</h4></tr>
+       <tr>
+        <th>Edudetail</th>
+        <th>Degname</th>
+        <th>Percentage</th>
+        <th>Class</th>
+        <th>University</th>
+        <th>Nooftrails</th>
+        <th>Passmonth</th>
+        <th>Passyear</th>
+        <th>Upcerti</th>
+        </tr>
+    <tr><h4>Post graduation info</h4></tr>
+        <tr>
+        <th>pEdudetail</th>
+        <th>pDegname</th>
+        <th>pPercentage</th>
+        <th>pClass</th>
+        <th>pUniversity</th>
+        <th>pNooftrails</th>
+        <th>pPassmonth</th>
+        <th>pPassyear</th>
+        <th>pUpcerti</th>
+      
+
+    </tr>
+     <tr>
+            <th>@Model.Education.Edudetail</th>
+            <th>@Model.Education.Degname</th>
+            <th>@Model.Education.Percentage</th>
+            <th>@Model.Education.Class</th>
+            <th>@Model.Education.University</th>
+            <th>@Model.Education.Nooftrails</th>
+            <th>@Model.Education.Passmonth</th>
+            <th>@Model.Education.Passyear</th>
+            <th>@Model.Education.Upcerti</th>
+            </tr>
+            <tr></tr>
+            <tr>
+            <th>@Model.Education.pEdudetail</th>
+            <th>@Model.Education.pDegname</th>
+            <th>@Model.Education.pPercentage</th>
+            <th>@Model.Education.pClass</th>
+            <th>@Model.Education.pUniversity</th>
+            <th>@Model.Education.pNooftrails</th>
+            <th>@Model.Education.pPassmonth</th>
+            <th>@Model.Education.pPassyear</th>
+            <th>@Model.Education.pUpcerti</th>
+      
+        </tr>
+
+</table>
+
+<h2>Personal Info</h2>
+<table class="table">
+    <tr>
+        <th>jobsector </th>
+        <th>startfrom</th>
+        <th>nameofpost</th>
+        <th>endto</th>
+        <th>empname</th>
+        <th>empcontactno</th>
+        <th>empadd</th>
+        <th>emppincode</th>
+        <th>jobdescription</th>
+        <th>salary</th>
+        <th>upexpcerti</th>
+
+    </tr>
+        <tr>
+            <th>@Model.professional.jobsector </th>
+            <th>@Model.professional.startfrom</th>
+            <th>@Model.professional.nameofpost</th>
+            <th>@Model.professional.endto</th>
+            <th>@Model.professional.empname</th>
+            <th>@Model.professional.empcontactno</th>
+            <th>@Model.professional.empadd</th>
+            <th>@Model.professional.emppincode</th>
+            <th>@Model.professional.jobdescription</th>
+            <th>@Model.professional.salary</th>
+            <th>@Model.professional.upexpcerti</th>
+
+        </tr>
+
+    
+</table>
+
+
+*@
+
+@model finalconfirmation
+@{
+    ViewData["Title"] = "finalconfirmation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+      .accept-btn button {
+        background-color: green;
+        color: white;
+        padding: 15px;
+        text-align: center;
+
+        padding: 12px 51px;
+    }
+
+     .accept-btn a:hover {
+        background-color: green; /* this is to disable hover effect */
+    }
+    .green-row {
+        background-color: green;
+        color: white;
+    }
+</style>
+
+    <center><h1 style="text-align:center">FINAL CONFIRMATION</h1></center>
+</div>
+<br />
+<form asp-action="Index" onclick="Index">
+    <hr />
+
+    <div style="border-bottom: 2px solid green">
+        <h3>Personal Information</h3>
+    </div>
+    <br />
+    <table class="table">
+        <tr class="green-row">
+            <th>TITLE</th>
+            <th>FIRSTNAME</th>
+            <th>MIDDLENAME</th>
+            <th>SURNAME</th>
+            <th>MOTHERNAME</th>
+            <th>GENDER</th>
+            <th>DATE.OF.BIRTH</th>
+            <th>NATIONALITY</th>
+            <th>CONTACT.NO</th>
+            <th>ALTERNATE.NO</th>
+            <th>CAST</th>
+            <th>PHYSICALLY CHALLANGED</th>
+            <th>PRESENT ADDRESS</th>
+            <th>PERMANENT ADDRESS</th>
+            <th>MARITIAL</th>
+            <th>PHOTO</th>
+            <th>SIGN</th>
+            <th>PROOF</th>
+
+        </tr>
+        <tr>
+            <th>@Model.PersonalInfo.Title</th>
+            <th>@Model.PersonalInfo.FirstName</th>
+            <th>@Model.PersonalInfo.MiddleName</th>
+            <th>@Model.PersonalInfo.Surname</th>
+            <th>@Model.PersonalInfo.MotherName</th>
+            <th>@Model.PersonalInfo.Gender</th>
+            <th>@Model.PersonalInfo.DateOfBirth</th>
+            <th>@Model.PersonalInfo.Nationality</th>
+            <th>@Model.PersonalInfo.ContactNo</th>
+            <th>@Model.PersonalInfo.AlternateNo</th>
+            <th>@Model.PersonalInfo.Cast</th>
+            <th>@Model.PersonalInfo.Phychall</th>
+            <th>@Model.PersonalInfo.PresentAdd</th>
+            <th>@Model.PersonalInfo.PermanentAdd</th>
+            <th>@Model.PersonalInfo.Maritial</th>
+            <th>@Model.PersonalInfo.Upphoto</th>
+            <th>@Model.PersonalInfo.Upsign</th>
+            <th>@Model.PersonalInfo.Upproof</th>
+            @*<td>@Html.ActionLink("Edit", "Personalinfo", new { id = Model.PersonalInfo.id })</td>*@
+        </tr>
+    </table>
+    <br />
+
+    <div style="border-bottom: 2px solid green">
+        <h2>Educational Information</h2>
+    </div>
+    <br />
+    <tr><h4>Graduation Information</h4></tr>
+    <br />
+    <table class="table">
+        <tr class="green-row">
+            <th>EDUCATION DETAILS</th>
+            <th>DEGREE</th>
+            <th>PERCENTAGE</th>
+            <th>CLASS</th>
+            <th>UNIVERSITY</th>
+            <th>NO.OF.TRAILS</th>
+            <th>PASSING MONTH</th>
+            <th>PASSING YEAR</th>
+            <th>UPLOADED CERTI</th>
+        </tr>
+        <tr>
+            <th>@Model.Education.Edudetail</th>
+            <th>@Model.Education.Degname</th>
+            <th>@Model.Education.Percentage</th>
+            <th>@Model.Education.Class</th>
+            <th>@Model.Education.University</th>
+            <th>@Model.Education.Nooftrails</th>
+            <th>@Model.Education.Passmonth</th>
+            <th>@Model.Education.Passyear</th>
+            <th>@Model.Education.Upcerti</th>
+        </tr>
+    </table>
+    <br />
+    <tr><h4>Post graduation information</h4></tr>
+    <br />
+    <table class="table">
+        <tr class="green-row">
+            <th>EDUCATION DETAILS</th>
+            <th>DEGREE</th>
+            <th>PERCENTAGE</th>
+            <th>CLASS</th>
+            <th>UNIVERSITY</th>
+            <th>NO.OF.TRAILS</th>
+            <th>PASSING MONTH</th>
+            <th>PASSING YEAR</th>
+            <th>UPLOADED CERTI</th>
+
+
+        </tr>
+
+        <tr></tr>
+        <tr>
+            <th>@Model.Education.pEdudetail</th>
+            <th>@Model.Education.pDegname</th>
+            <th>@Model.Education.pPercentage</th>
+            <th>@Model.Education.pClass</th>
+            <th>@Model.Education.pUniversity</th>
+            <th>@Model.Education.pNooftrails</th>
+            <th>@Model.Education.pPassmonth</th>
+            <th>@Model.Education.pPassyear</th>
+            <th>@Model.Education.pUpcerti</th>
+            @* <td>@Html.ActionLink("Edit", "GraduationInfo", new { id = can.id })</td>*@
+        </tr>
+    </table>
+
+    <br />
+    <div style="border-bottom: 2px solid green">
+        <h2>Personal Information</h2>
+    </div>
+    <br />
+    <table class="table">
+        <tr class="green-row">
+            <th>JOBSECTOR</th>
+            <th>START DATE</th>
+            <th>NAME OF POST</th>
+            <th>END DATE</th>
+            <th>EMPLOYEE NAME</th>
+            <th>CONTACT NO</th>
+            <th>ADDRESS</th>
+            <th>PIN CODE</th>
+            <th>DESCRIPTION</th>
+            <th>SALARY</th>
+            <th>CERTIFICATE</th>
+
+        </tr>
+        <tr>
+            <th>@Model.professional.jobsector </th>
+            <th>@Model.professional.startfrom</th>
+            <th>@Model.professional.nameofpost</th>
+            <th>@Model.professional.endto</th>
+            <th>@Model.professional.empname</th>
+            <th>@Model.professional.empcontactno</th>
+            <th>@Model.professional.empadd</th>
+            <th>@Model.professional.emppincode</th>
+            <th>@Model.professional.jobdescription</th>
+            <th>@Model.professional.salary</th>
+            <th>@Model.professional.upexpcerti</th>
+            @* <td>@Html.ActionLink("Edit", "Personalinfo", new { id = item.id })</td>*@
+        </tr>
+
+    </table>
+    <br />
+       <div class="form-group col-md-3">
+           <input type="submit" value="submit" class="accept-btn" asp-action="Index"/>
+            @*<button class="accept-btn "> @Html.ActionLink("Submit","","Home")</button>*@
+        </div>
+</form>

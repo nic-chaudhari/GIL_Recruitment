@@ -14,6 +14,8 @@ using System.Data.Entity;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using static GIL_Recruitment.Models.jobpost;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 
 namespace GIL_Recruitment.Controllers
 {
@@ -61,12 +63,12 @@ namespace GIL_Recruitment.Controllers
         {
             using (var connection = DapperHelper.GetOpenConnection())
             {
-                
+                if (ModelState.IsValid) { 
                 var rowsAffected = connection.Execute("InsertJobPost", new
                 {
                     Title = model.title,
-                    Description = model.description,
-                    AgeLimit = model.age_limit,
+
+                    AgeLimit = Convert.ToInt32(model.age_limit),
                     StartDate = model.start_date,
                     EndDate = model.end_date,
                     Qualification = model.qualification,
@@ -76,12 +78,22 @@ namespace GIL_Recruitment.Controllers
                 commandType: CommandType.StoredProcedure);
 
                 return RedirectToAction("Admin", "Admin");
+                }
+                else { return View(); }
             }
         }
 
         public IActionResult All_candidates()
         {
-            return View();
+            using (var connection = DapperHelper.GetOpenConnection())
+            {
+
+                var results = connection.Query<AllDetails>("spGetPersonalEducationProfessional", commandType: CommandType.StoredProcedure);
+
+
+                return View(results);
+            }
+
         }
 
         public IActionResult Application_received()
@@ -89,17 +101,76 @@ namespace GIL_Recruitment.Controllers
             return View();
         }
 
-        public IActionResult Post_application()
+       
+        public IActionResult Job_list(jobpost jobpost)
         {
-            return View();
+            using (var connection = DapperHelper.GetOpenConnection())
+            {
+                var sql = "SELECT id, title,start_date, end_date FROM jobpost";
+                var records = connection.Query<jobpost>(sql);
+                return View(records.ToList());
+            }
         }
-
         public IActionResult Send_calllater()
         {
             return View();
         }
 
-     
+        public IActionResult Edit(int id)
+        {
+            using (var connection = DapperHelper.GetOpenConnection())
+            {
+                var sql = "SELECT * FROM jobpost WHERE id = @id";
+                var jobpost = connection.QueryFirstOrDefault<jobpost>(sql, new { id });
+                if (jobpost != null)
+                {
+                    return View(jobpost);
+                }
+                return RedirectToAction("Job_list", "Admin");
+            }
+        }
+        [HttpPost]
+        public IActionResult Edit(jobpost model)
+        {
+            using (var connection = DapperHelper.GetOpenConnection())
+            {
+                var rowsAffected = connection.Execute("UpdateJobPost", new
+                {
+                    p_Id = model.id,
+                    p_Title = model.title,
+                    p_AgeLimit = model.age_limit,
+                    p_StartDate = model.start_date,
+                    p_EndDate = model.end_date,
+                    p_Qualification = model.qualification,
+                    p_Desirable = model.desirable,
+                    p_Experience = model.experience
+                },
+                commandType: CommandType.StoredProcedure);
+
+                return RedirectToAction("Job_list", "Admin");
+            }
+        }
+
+
+        public IActionResult Logout()
+        {
+            // Clear the authentication cookie
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            // Redirect the user to the login page
+            return RedirectToAction("Login","Admin");
+        }
+
+        [HttpPost]
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            using (var connection = DapperHelper.GetOpenConnection())
+            {
+                var rowsAffected = connection.Execute("DELETE FROM jobpost WHERE id=@id", new { id = id });
+                return RedirectToAction("Job_list", "Admin");
+            }
+        }
 
     }
 }
